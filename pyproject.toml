@@ -15,10 +15,11 @@ license = { file = "LICENSE" }
 
 # 如果有依赖
 dependencies = [
-  "numpy",
+  "numpy<=1.24",
   "scipy",
   "ase",
   "matplotlib",
+  "MDAnalysis",
 ]
 
 [project.urls]
