@@ -31,7 +31,7 @@ pip install --upgrade --force-reinstall .
 ---
 ## Manual
 ### Interface Structure Analysis
-* Interface
+* [Interface](manual/interface.md)
 
 ### Wannier Centroid Analysis
 * Wannier/Electrostatic Potential Calculator
