@@ -21,7 +21,7 @@ class dipole_cell:
             raise PermissionError("Unsupporting cell format. Only [x, y, z, alpha, beta, gamma] or 3*3 matrix is permitted.")
         self.charge_dict = charge_dict
 
-    def get_dipole_z(self, wrap=False):
+    def get_dipole_x(self, wrap=False):
         trajectory = self.trajectory
         charge_dict = self.charge_dict
         tot_dipole = []
@@ -42,7 +42,7 @@ class dipole_cell:
             print(f'Frame {trajectory.index(frame)} Dipole: done.')
         return np.array(tot_dipole)
     
-    def get_dipole_z(self, wrap=False):
+    def get_dipole_y(self, wrap=False):
         trajectory = self.trajectory
         charge_dict = self.charge_dict
         tot_dipole = []
