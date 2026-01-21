@@ -13,6 +13,10 @@ readme = "README.md"
 requires-python = ">=3.8"
 license = { file = "LICENSE" }
 
+[tool.setuptools.packages.find]
+include = ["ec_mos_toolkits*"]
+exclude = ["manual*", "docs*", "tests*"]
+
 dependencies = [
   "numpy<=1.24",
   "scipy",
