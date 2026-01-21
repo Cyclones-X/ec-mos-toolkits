@@ -1,21 +1,19 @@
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = ["setuptools>=61", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "ec-mos-toolkits"               
+name = "ec-mos-toolkits"
 version = "0.1.0.dev0"
 description = "A toolkit for electrochemistry of aqueous metal oxide semiconductor (MOS) interfaces"
-authors = [
-  { name="Zi-Heng Gong", email="cyclones-x@outlook.com" },
-]
 readme = "README.md"
 requires-python = ">=3.8"
-license = { file = "LICENSE" }
 
-[tool.setuptools.packages.find]
-include = ["ec_mos_toolkits*"]
-exclude = ["manual*", "docs*", "tests*"]
+authors = [
+  { name = "Zi-Heng Gong", email = "cyclones-x@outlook.com" }
+]
+
+license = "MIT"
 
 dependencies = [
   "numpy<=1.24",
@@ -24,6 +22,10 @@ dependencies = [
   "matplotlib",
   "MDAnalysis",
 ]
+
+[tool.setuptools.packages.find]
+include = ["ec_mos_toolkits*"]
+exclude = ["manual*", "docs*", "tests*"]
 
 [project.urls]
 Homepage = "https://github.com/Cyclones-X/ec-mos-toolkits"
