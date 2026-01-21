@@ -64,7 +64,7 @@ class surface_identify:
         O_lat_idx = O_idx[~np.isin(O_idx, O_wat_idx)]
         return O_wat_idx, O_lat_idx
     
-    def surface_species(self) -> Surface_sp:
+    def surface_species(self, lattice_cn_MO) -> Surface_sp:
         O_idx, H_idx, M_idx = self.idx_elements()
         atoms = self.atoms
         cn_OH, cn_OM = self.coordination_count()
@@ -74,10 +74,11 @@ class surface_identify:
         O_bridge_z = O_bridge[:, 1]
         O_bridge_idx = np.array([O_bridge[O_bridge_z < np.mean(O_bridge_z)][:, 0].astype(int), O_bridge[O_bridge_z > np.mean(O_bridge_z)][:, 0].astype(int)])
 
-        pairs_wat_M, _ = capped_distance(reference=atoms[M_idx], configuration=atoms[O_wat_idx], max_cutoff=self.cutoff_O_M, box=self.cell)
-        M_unsatur = np.array([M_idx[pairs_wat_M[:, 0]], atoms[M_idx[pairs_wat_M[:, 0]]].positions[:, 2]]).T
-        M_unsatur_z = M_unsatur[:, 1]
-        M_unsatur_idx = np.array([M_unsatur[M_unsatur_z < np.mean(M_unsatur_z)][:, 0].astype(int), M_unsatur[M_unsatur_z > np.mean(M_unsatur_z)][:, 0].astype(int)])
+        pairs_lat_M, _ = capped_distance(reference=atoms[M_idx], configuration=atoms[O_lat_idx], max_cutoff=self.cutoff_O_M, box=self.cell)
+        cn_Olat_M = np.unique(pairs_lat_M[:, 0], return_counts=True)
+        M_unsatur = M_idx[cn_Olat_M[0][cn_Olat_M[1] != lattice_cn_MO]]
+        M_unsatur_z = atoms[M_unsatur].positions[:, 2]
+        M_unsatur_idx = np.array([M_unsatur[M_unsatur_z < np.mean(M_unsatur_z)].astype(int), M_unsatur[M_unsatur_z > np.mean(M_unsatur_z)].astype(int)])
         
         return Surface_sp(
             get_H=self.idx_elements()[1],
