@@ -34,5 +34,5 @@ pip install --upgrade --force-reinstall .
 * [Interface](manual/interface.md)
 
 ### Wannier Centroid Analysis
-* Wannier/Electrostatic Potential Calculator
+* [Wannier/Electrostatic Potential Calculator](manual/wannier_electropotcalc.md)
 * Wannier/Cell Dipole Calculator
